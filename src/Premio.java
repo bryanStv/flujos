@@ -30,6 +30,7 @@ public class Premio implements Comparable<Premio> {
             }
         }
         return this.invertido - other.invertido;
+
     }
 
 }

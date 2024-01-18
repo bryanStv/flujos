@@ -12,9 +12,10 @@ public class LoteriaJusta {
         mostrarResultado(listaLoteria);
 
         listaLoteria = new ArrayList<>();
-        listaLoteria.add(new Premio(10,5));
+        listaLoteria.add(new Premio(10,4));
         listaLoteria.add(new Premio(20,5));
-        listaLoteria.add(new Premio(30,5));
+        listaLoteria.add(new Premio(30,6));
+        listaLoteria.add(new Premio(-50,-7));
         mostrarResultado(listaLoteria);
     }
     private static void mostrarResultado(ArrayList<Premio> lista){
@@ -33,16 +34,12 @@ public class LoteriaJusta {
     private static boolean esJusta(ArrayList<Premio> lista){
         ordenarLista(lista);
         Premio actual, siguiente;
-        boolean resultado = false;
+        boolean resultado = true;
         for(int i = 0; i < lista.size()-1;i++){
             actual = lista.get(i);
             siguiente = lista.get(i+1);
-            if(actual.getInvertido() <= siguiente.getInvertido()){
-                if (actual.getPremiado() < siguiente.getPremiado()) {
-                    resultado = true;
-                }else{
-                    return false;
-                }
+            if((actual.getInvertido() <= siguiente.getInvertido()) && (!(actual.getPremiado() < siguiente.getPremiado()))) {
+                return false;
             }
         }
         return resultado;
